@@ -37,10 +37,19 @@ It also symlinks all the modules to the root-`node_modules`
     1. remove the previously created symlink.
 1. create symlinks in the root-`node_modules` that point to the module-folders
 
-# why are certain things done the way they are?
+# Why are certain things done the way they are?
 - step 2: this is done, so that the following npm-install wouldn't try to recursively install things within `node_modules`
 - step 5.2: this is done, so that possible npm-installs done by the postinstall end up in the root-`node_modules`, and any possible dependencies needed by the postinstall are avaliable to it
 - step 6: this is done, so that the modules can be required without navigating to it in the require-statement
+
+# Known issues
+At the moment, whenever two or more local modules depend on the same package, but with different, incompatible versions, minstall will exit with an error that tells you, where the incompatibility occured.
+
+If you absolutely have to use incompatible versions of the same package throughout your project, minstall is __not just yet__ for you.
+
+~~In the (probably near) future, support for multiple versions of the same package will get implemented!~~
+
+__There is an actual plan now, and i've started working on this, see [Issue 5](https://github.com/heikomat/minstall/issues/5).__
 
 # Glossary
 ##### root-node_modules
